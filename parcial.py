@@ -50,11 +50,13 @@ def CargarDatosNuevo(archivo):
 
 
 def ConsultarDias(archivo, buscador):
+    #Se utiliza aquí el método de apareo y un condicional para mostrar los datos solo si coinciden con el legajo buscado.
     try:
         with open (archivo) as f_empleados, open("dias.csv") as f_dias:
             empleados_csv = csv.reader(f_empleados)
             dias_csv = csv.reader(f_dias)
             next(dias_csv, None)
+
 
             empleado = next(empleados_csv, None)
             dias = next(dias_csv, None)
@@ -76,7 +78,7 @@ def ConsultarDias(archivo, buscador):
         print("Hubo un problema al intentar abrir el archivo")
 
 print("Bienvenido al gestor de vacaciones de empleados")
-lista_archivos = ["empleados.csv"] #lista donde se van a guardar los nombres de archivos.csv
+lista_archivos = ["empleados.csv"] #lista donde se van a guardar los nombres de archivos.csv. Se pasa ya un archivo con datos para hacer pruebas
 
 #se crea el menú con los controles de que no se ingresen caracteres erroneos.
 flag = "0"
