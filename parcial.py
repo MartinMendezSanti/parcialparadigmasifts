@@ -52,6 +52,7 @@ def ConsultarDias(archivo, buscador):
     #Se utiliza aquí el método de apareo y un condicional para mostrar los datos solo si coinciden con el legajo buscado.
     try:
         with open (archivo) as f_empleados, open("dias.csv") as f_dias:
+            orden = 0
             empleados_csv = csv.reader(f_empleados)
             dias_csv = csv.reader(f_dias)
             next(dias_csv, None)
@@ -67,12 +68,13 @@ def ConsultarDias(archivo, buscador):
                 while dias and dias[0] == legajo:
                     tomados += 1
                     dias = next(dias_csv, None)
-                print(f"{legajo} : {buscador}")
                 if legajo == buscador:
+                    orden += 1
                     restante = vacaciones - tomados
                     print(f"Legajo {legajo}: {nombre} {apellido}, le restan {restante} de vacaciones")
-                    break
                 empleado = next(empleados_csv, None)
+            if orden < 1:
+                print("No se encontró ningún empleado con el legajo buscado")
     except IOError:
         print("Hubo un problema al intentar abrir el archivo")
 
