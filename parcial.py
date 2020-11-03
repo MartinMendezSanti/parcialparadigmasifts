@@ -1,5 +1,4 @@
 import csv
-import sys
 
 def CargarDatosModificar(archivo):
     try:
